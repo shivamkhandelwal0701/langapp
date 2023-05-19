@@ -20,7 +20,7 @@ function Login() {
     if (event.target.value.length === 0) {
       setEmailError("email cannot be empty");
     } else if (!emailPattern.test(event.target.value)) {
-      setEmailError("Invalid email format.");
+      setEmailError("Invalid emailhtmlFormat.");
     } else {
       setEmailError("");
     }
@@ -48,18 +48,27 @@ function Login() {
         email,
         password,
       });
-      console.log(res, "res")
-
+      console.log(res, "res");
       if (res.status === 200) {
         const { name, email, phone } = res.data.data;
-        //
-        console.log(res);
-        console.log(res.data); //isme response.data me message aa rha hai jisme
+        console.log(res.data.token);
         localStorage.setItem("user", JSON.stringify({ name, email, phone }));
-        //
+        localStorage.setItem("token", res.data.token);
+        // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         navigate("/dashboard");
         alert("Login successful!");
       }
+
+      // if (res.status === 200) {
+      //   const { name, email, phone } = res.data.data;
+      //   //
+      //   console.log(res);
+      //   console.log(res.data); //isme response.data me message aa rha hai jisme
+      //   localStorage.setItem("user", JSON.stringify({ name, email, phone }));
+      //   //
+      //   navigate("/dashboard");
+      //   alert("Login successful!");
+      // }
     } catch (error) {
       // console.log(res, "res")
       alert("Invalid email or password");
@@ -71,7 +80,7 @@ function Login() {
     if (email.trim().length === 0) {
       setEmailError("Email cannot be empty.");
     } else if (!emailPattern.test(email)) {
-      setEmailError("Invalid email format.");
+      setEmailError("Invalid emailhtmlFormat.");
     } else {
       setEmailError("");
     }
@@ -90,86 +99,109 @@ function Login() {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const res = await axios.post("http://localhost:8000/login", {
+  //       email,
+  //       password,
+  //     });
+  //     console.log(res, "res");
+
+  //     if (res.status === 200) {
+  //       const { name, email, phone, token } = res.data.data;
+  //       console.log(res.data.token)
+  //       localStorage.setItem("user", JSON.stringify({ name, email, phone }));
+  //       localStorage.setItem("token", res.data.token);
+  //       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  //       navigate("/dashboard");
+  //       alert("Login successful!");
+  //     }
+  //   } catch (error) {
+  //     alert("Invalid email or password");
+  //     console.error(error);
+  //   }
+  // };
   return (
-    <><>
+    <>
+      <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-primary">
           <h1 className="navbar-brand m-1">&nbsp; Login Page</h1>
         </nav>
-      <div className="main">
-        
-      
-        <div className="container mt-2">
-          <div className="row ">
-            <div className="col-md-6 mt-5 mx-auto">
-              <div className="card mycard shadow-lg rounded-lg">
-                <div className="card-body">
-                  <div className="card-header bg-primary text-white">
-                    <h1 className="text-center mt-3 mb-3">Login</h1>
-                  </div>
-                  <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label className="mt-3" for="email">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control mt-3"
-                        id="email"
-                        name="email"
-                        value={email}
-                        placeholder="enter your email"
-                        onChange={handleChangeEmail}
-                        onBlur={handleChangeEmail}
-                        required
-                      />
-                      {emailError && (
-                        <span className="text-danger">{emailError}</span>
-                      )}
+        <div className="main">
+          <div className="container mt-2">
+            <div className="row ">
+              <div className="col-md-6 mt-5 mx-auto">
+                <div className="card mycard shadow-lg rounded-lg">
+                  <div className="card-body">
+                    <div className="card-header bg-primary text-white">
+                      <h1 className="text-center mt-3 mb-3">Login</h1>
                     </div>
-                    <div className="form-group">
-                      <label className="mt-3" for="password">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control mt-3"
-                        id="password"
-                        name="password"
-                        placeholder="enter your password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        onBlur={handlePasswordChange}
-                        required
-                      />
-                      {passwordError && (
-                        <span className="text-danger">{passwordError}</span>
-                      )}
+                    <form onSubmit={handleSubmit}>
+                      <div className="form-group">
+                        <label className="mt-3" htmlFor="email">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          className="form-control mt-3"
+                          id="email"
+                          name="email"
+                          value={email}
+                          placeholder="enter your email"
+                          onChange={handleChangeEmail}
+                          onBlur={handleChangeEmail}
+                          required
+                        />
+                        {emailError && (
+                          <span className="text-danger">{emailError}</span>
+                        )}
+                      </div>
+                      <div className="form-group">
+                        <label className="mt-3" htmlFor="password">
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          className="form-control mt-3"
+                          id="password"
+                          name="password"
+                          placeholder="enter your password"
+                          value={password}
+                          onChange={handlePasswordChange}
+                          onBlur={handlePasswordChange}
+                          required
+                        />
+                        {passwordError && (
+                          <span className="text-danger">{passwordError}</span>
+                        )}
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-block mt-4"
+                      >
+                        Log in
+                      </button>
+                    </form>
+                    <div className="text-center mt-3">
+                      <p className="mb-0">
+                        Don't have an account?{" "}
+                        <Link to="/signup" className="text-primary">
+                          Sign up here
+                        </Link>
+                      </p>
                     </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-block mt-4"
-                    >
-                      Log in
-                    </button>
-                  </form>
-                  <div className="text-center mt-3">
-                    <p className="mb-0">
-                      Don't have an account?{" "}
-                      <Link to="/signup" className="text-primary">
-                        Sign up here
-                      </Link>
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <footer className="bg-dark text-center text-white py-3 ">
-        &copy; {new Date().getFullYear()} Language Learning. All rights
-        reserved.
-      </footer>
+        <footer className="bg-dark text-center text-white py-3 ">
+          &copy; {new Date().getFullYear()} Language Learning. All rights
+          reserved.
+        </footer>
       </>
     </>
   );
@@ -177,7 +209,26 @@ function Login() {
 
 export default Login;
 
-// navigate("/dashboard", { state: { name: res.data.data.name } });
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
 
-// import UserContext from "./UserContext";
-// setUser(res.data.data); // set the user in context
+//   try {
+//     const res = await axios.post("http://localhost:8000/login", {
+//       email,
+//       password,
+//     });
+//     console.log(res, "res");
+
+//     if (res.status === 200) {
+//       const { name, email, phone, token } = res.data.data;
+//       localStorage.setItem("user", JSON.stringify({ name, email, phone }));
+//       localStorage.setItem("token", token);
+//       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+//       navigate("/dashboard");
+//       alert("Login successful!");
+//     }
+//   } catch (error) {
+//     alert("Invalid email or password");
+//     console.error(error);
+//   }
+// };

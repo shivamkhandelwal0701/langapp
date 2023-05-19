@@ -1,9 +1,30 @@
 import React from "react";
 import "./dashlang.css";
 import "./french.css";
+import { Dropdown } from "react-bootstrap";
 function Korean() {
+
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
+    <header><nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <h1 className="navbar-brand m-1">Language Learning</h1>
+
+          <div className="d-flex justify-content-end">
+    <Dropdown className="drop">
+      <Dropdown.Toggle variant="outline-light" id="dropdown-basic" className="btn btn-outline-light mr-2">
+        User
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item>{user.name}</Dropdown.Item>
+        <Dropdown.Item href="/home">Logout</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </div>
+        </div>
+      </nav></header>
       <div className="mypage">
         <div className="top-bar">
           <h1>Learn Korean Language</h1>
@@ -64,7 +85,7 @@ function Korean() {
         <div className="mt-4">
           <h1 className="text-primary mb-3">Some Important Links</h1>
           <div className="can mb-3">
-            <div className="card" style={{ width: "30rem" }}>
+            <div className="card" style={{ width: "50rem" }}>
               <div className="card-body">
                 <p className="lead bg-light">
                   If you want to learn Korean from the basics, here is a link to
@@ -79,7 +100,7 @@ function Korean() {
               </div>
             </div>
 
-            <div className="card " style={{ width: "30rem" }}>
+            <div className="card " style={{ width: "50rem" }}>
               <div className="card-body">
                 <p className="lead bg-light">
                   If you want to practice Korean through interactive quizzes and
@@ -96,6 +117,10 @@ function Korean() {
           </div>
         </div>
       </div>
+      <footer className="bg-dark text-center text-white py-3 ">
+        &copy; {new Date().getFullYear()} Language Learning. All rights
+        reserved.
+      </footer>
     </>
   );
 }

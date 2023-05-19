@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
+import { Dropdown } from "react-bootstrap";
 const KoreanQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-
+  const user = JSON.parse(localStorage.getItem("user"));
   const questions = [
     {
       questionText: "Translate 'hello' to Korean?",
@@ -217,14 +217,29 @@ const KoreanQuiz = () => {
 
     return (
       <>
-        <header>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
-              <h1 className="navbar-brand m-1">Korean Quiz </h1>
-            </div>
-          </nav>
-        </header>
+       <header>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <h1 className="navbar-brand m-1">Korean Quiz</h1>
+            <div className="d-flex justify-content-end">
+              <Dropdown className="drop">
+                <Dropdown.Toggle
+                  variant="outline-light"
+                  id="dropdown-basic"
+                  className="btn btn-outline-light mr-2"
+                >
+                  User
+                </Dropdown.Toggle>
 
+                <Dropdown.Menu>
+                  <Dropdown.Item>{user.name}</Dropdown.Item>
+                  <Dropdown.Item href="/home">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          </div>
+        </nav>
+      </header>
         <div className=" xyz d-flex justify-content-center align-items-center h-100">
           <div className="col-5 card border-primary">
             <div className="card-body text-center">
@@ -262,7 +277,23 @@ const KoreanQuiz = () => {
           <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
               <div className="container-fluid">
-                <h1 className="navbar-brand m-1">Korean Quiz </h1>
+                <h1 className="navbar-brand m-1">Korean Quiz</h1>
+                <div className="d-flex justify-content-end">
+                  <Dropdown className="drop">
+                    <Dropdown.Toggle
+                      variant="outline-light"
+                      id="dropdown-basic"
+                      className="btn btn-outline-light mr-2"
+                    >
+                      User
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item>{user.name}</Dropdown.Item>
+                      <Dropdown.Item href="/home">Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
               </div>
             </nav>
           </header>

@@ -1,18 +1,32 @@
 import lg from "../assets/girl-with-many-thoughts_1308-101790.jpeg";
 import React from "react";
 import "./dashboard.css";
+import {Dropdown} from 'react-bootstrap';
 import { Link } from "react-router-dom";
+
 
 function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
-    <nav className="navbar navbar-dark bg-dark">
-    <h1 className="navbar-brand"> &nbsp; Language Learning App</h1>
-    <div>
-      <h1 className="navbar-brand m-1">{user.name}&nbsp;&nbsp;</h1>
-    </div>
-  </nav>
+   <nav className="navbar navbar-dark bg-dark">
+  <h1 className="navbar-brand"> &nbsp; Language Learning App</h1>
+  <div className="d-flex justify-content-end">
+    <Dropdown className="drop">
+      <Dropdown.Toggle variant="outline-light" id="dropdown-basic" className="btn btn-outline-light mr-2">
+        User
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item>{user.name}</Dropdown.Item>
+        <Dropdown.Item href="/home">Logout</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </div>
+</nav>
+
+
+
     <div className="main">
      
     <section>

@@ -4,7 +4,11 @@
 p{
     margin-bottom: 0px;
 }
-  
+ 
+.drop{
+  margin-right: 20px;
+  width: 100px;
+}
   .navbar-brand {
     font-size: 1.5rem;
     color: white;
