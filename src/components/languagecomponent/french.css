@@ -1,0 +1,54 @@
+.btn{
+    border-radius:20px;
+}
+.card {
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.mypage{
+  padding: 20px;
+}
+.card-body {
+  padding: 20px;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.fs-4 {
+  font-size: 1.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+  text-transform: uppercase;
+}
+button {
+    width: 100%;
+  
+    
+  }
+
+.can{
+    display: flex;
+    justify-content: space-around;
+}

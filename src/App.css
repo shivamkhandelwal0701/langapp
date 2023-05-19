@@ -1,0 +1,89 @@
+/*
+import React, { useState } from "react";
+
+const questions = [
+  {
+    id: 1,
+    question: "Translate 'Hello' to French",
+    options: [
+      { id: 1, answer: "Bonjour", isCorrect: true },
+      { id: 2, answer: "Au revoir", isCorrect: false },
+      { id: 3, answer: "Merci", isCorrect: false },
+      { id: 4, answer: "Oui", isCorrect: false },
+    ],
+  },
+  {
+    id: 2,
+    question: "Translate 'Goodbye' to French",
+    options: [
+      { id: 1, answer: "Au revoir", isCorrect: true },
+      { id: 2, answer: "Bonjour", isCorrect: false },
+      { id: 3, answer: "Merci", isCorrect: false },
+      { id: 4, answer: "Oui", isCorrect: false },
+    ],
+  },
+  // Add more questions here
+];
+
+function QuizApp() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+
+  const handleAnswerClick = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
+
+  const handleRestartQuiz = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowScore(false);
+  };
+
+  return (
+    <div className="container">
+      {!showScore ? (
+        <div className="card">
+          <h1>Quiz: English to French</h1>
+          <h2>Question {currentQuestion + 1}</h2>
+          <p>{questions[currentQuestion].question}</p>
+          <div className="options-container">
+            {questions[currentQuestion].options.map((option) => (
+              <button
+                key={option.id}
+                onClick={() => handleAnswerClick(option.isCorrect)}
+                className="btn btn-primary"
+              >
+                {option.answer}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="card">
+          <h1>Quiz Completed!</h1>
+          <h2>Your Score: {score}/{questions.length}</h2>
+          <button
+            onClick={handleRestartQuiz}
+            className="btn btn-primary"
+          >
+            Restart Quiz
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default QuizApp;
+
+*/

@@ -1,0 +1,33 @@
+.body {
+    background-color: rgb(230, 227, 227);;
+  }
+  
+  .mycard {
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .mycard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .form-control {
+    border-radius: 20px;
+    border-color: #ced4da;
+  }
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #007bff;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  .text-primary {
+    font-weight: bold;
+  }
