@@ -20,7 +20,7 @@ function Login() {
     if (event.target.value.length === 0) {
       setEmailError("email cannot be empty");
     } else if (!emailPattern.test(event.target.value)) {
-      setEmailError("Invalid emailhtmlFormat.");
+      setEmailError("Invalid email Format.");
     } else {
       setEmailError("");
     }
@@ -56,7 +56,7 @@ function Login() {
         localStorage.setItem("token", res.data.token);
         // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         navigate("/dashboard");
-        alert("Login successful!");
+        // alert("Login successful!");
       }
 
       // if (res.status === 200) {
@@ -71,7 +71,7 @@ function Login() {
       // }
     } catch (error) {
       // console.log(res, "res")
-      alert("Invalid email or password");
+      // alert("Invalid email or password");
       console.error(error);
     }
 

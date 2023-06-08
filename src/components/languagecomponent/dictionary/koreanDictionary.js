@@ -36,22 +36,28 @@ function Koreandictionary() {
 
   return (
     <>
-    <header><nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <h1 className="navbar-brand m-1">Language Learning</h1>
+      <header>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <h1 className="navbar-brand m-1">Language Learning</h1>
 
-          <Dropdown className="drop">
-      <Dropdown.Toggle variant="outline-light" id="dropdown-basic" className="btn btn-outline-light mr-2">
-        User
-      </Dropdown.Toggle>
+            <Dropdown className="drop">
+              <Dropdown.Toggle
+                variant="outline-light"
+                id="dropdown-basic"
+                className="btn btn-outline-light mr-2"
+              >
+                User
+              </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item>{user.name}</Dropdown.Item>
-        <Dropdown.Item href="/home">Logout</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-        </div>
-      </nav></header>
+              <Dropdown.Menu>
+                <Dropdown.Item>{user.name}</Dropdown.Item>
+                <Dropdown.Item href="/home">Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </nav>
+      </header>
       <div className="top-bar">
         <h1 className="text-dark mb-3"> Learn daily use words of Korean</h1>
       </div>

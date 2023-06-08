@@ -80,12 +80,12 @@ function Signup() {
       if (data.message === "User already exists.") {
         alert("User already exists with this email or phone number!");
       } else if (data.message === "User created successfully.") {
-        alert("Signup successful!");
+        // alert("Signup successful!");
         navigate("/login");
       }
     } catch (error) {
       console.log(error);
-      alert("Signup failed, please try again later!");
+      // alert("Signup failed, please try again later!");
     }
 
     // First name validation
@@ -132,12 +132,10 @@ function Signup() {
 
   return (
     <>
-     <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-primary">
-          <h1 className="navbar-brand m-1">&nbsp; Signup page</h1>
-        </nav>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-primary">
+        <h1 className="navbar-brand m-1">&nbsp; Signup page</h1>
+      </nav>
       <div className="main">
-       
-
         <div className="container mt-5">
           <div className="row ">
             <div className="col-md-8  col-lg-6 mx-auto">
